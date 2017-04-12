@@ -6,7 +6,7 @@ class GameWindow < Hasu::Window
   def initialize
     super(WINDOW_X, WINDOW_Y, false)
     @background_sprite = Gosu::Image.new(self, 'images/background.png', true)
-    @koala_sprite = Gosu::Image.new(self, 'images/essai.png', true)
+    @koala_sprite = Gosu::Image.new(self, 'images/koala.png', true)
     @enemy_sprite = Gosu::Image.new(self, 'images/enemy.png', true)
     @flag_sprite = Gosu::Image.new(self, 'images/flag.png', true)
     @font = Gosu::Font.new(self, Gosu::default_font_name, 30)
@@ -33,7 +33,7 @@ class GameWindow < Hasu::Window
   end
 
   def draw
-    @font.draw("Level #{@enemies.length}", WINDOW_X - 100, 10, 3, 1.0, 1.0, Gosu::Color::GREEN)
+    @font.draw("Level #{@enemies.length}", WINDOW_X - 100, 10, 3, 1.0, 1.0, Gosu::Color::BLACK)
 
     @koala_sprite.draw(@player[:x], @player[:y], 2)
     @enemies.each do |enemy|
