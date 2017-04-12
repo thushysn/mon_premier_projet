@@ -32,6 +32,8 @@ class GameWindow < Hasu::Window
     end
   end
 
+  
+
   def draw
     @font.draw("Level #{@enemies.length}", WINDOW_X - 100, 10, 3, 1.0, 1.0, Gosu::Color::BLACK)
 
@@ -62,7 +64,7 @@ class GameWindow < Hasu::Window
 
   def reinit
     @speed += 1
-    @player = {x: 0, y: 0}
+    @player = {x: 0, y: 768}
     @enemies.push({x: 500 + rand(100), y: 200 + rand(300)})
     high_score
   end
