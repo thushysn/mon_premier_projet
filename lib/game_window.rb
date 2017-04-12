@@ -121,8 +121,8 @@ class GameWindow < Hasu::Window
       enemy[:timer] -= 1
 
       new_enemy = enemy.dup
-      new_enemy[:x] += new_enemy[:result_x] * @speed
-      new_enemy[:y] += new_enemy[:result_y] * @speed
+      new_enemy[:x] += new_enemy[:result_x] * @speed*2
+      new_enemy[:y] += new_enemy[:result_y] * @speed*2
       new_enemy[:x] = normalize(new_enemy[:x], WINDOW_X - SPRITE_SIZE)
       new_enemy[:y] = normalize(new_enemy[:y], WINDOW_Y - SPRITE_SIZE)
       unless collision?(new_enemy, @flag)
