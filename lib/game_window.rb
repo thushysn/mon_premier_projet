@@ -110,6 +110,8 @@ class GameWindow < Hasu::Window
     end
   end
 
+  
+  
   def handle_enemies
     @enemies = @enemies.map do |enemy|
       enemy[:timer] ||= 0
