@@ -1,6 +1,6 @@
 class GameWindow < Hasu::Window
   SPRITE_SIZE = 128
-  WINDOW_X = 1024
+  WINDOW_X = 1256
   WINDOW_Y = 768
 
   def initialize
