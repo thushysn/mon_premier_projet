@@ -6,7 +6,7 @@ class GameWindow < Hasu::Window
   def initialize
     super(WINDOW_X, WINDOW_Y, false)
     @background_sprite = Gosu::Image.new(self, 'images/background.png', true)
-    @koala_sprite = Gosu::Image.new(self, 'images/koala.png', true)
+    @koala_sprite = Gosu::Image.new(self, 'images/essai.png', true)
     @enemy_sprite = Gosu::Image.new(self, 'images/enemy.png', true)
     @flag_sprite = Gosu::Image.new(self, 'images/flag.png', true)
     @font = Gosu::Font.new(self, Gosu::default_font_name, 30)
