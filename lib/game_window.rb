@@ -11,12 +11,12 @@ class GameWindow < Hasu::Window
     @flag_sprite = Gosu::Image.new(self, 'images/choco.png', true)
     @font = Gosu::Font.new(self, Gosu::default_font_name, 30)
     @flag = {x: WINDOW_X - SPRITE_SIZE, y: WINDOW_Y - SPRITE_SIZE}
-    @music = Gosu::Song.new(self, "musics/koala.wav")
+    @music = Gosu::Song.new(self, "musics/choco.wav")
     reset
   end
 
   def update
-    @player[:x] += @speed if button_down?(Gosu::Button::KbRight)
+    @player[:x] += @speed*2 if button_down?(Gosu::Button::KbRight)
     @player[:x] -= @speed if button_down?(Gosu::Button::KbLeft)
     @player[:y] += @speed if button_down?(Gosu::Button::KbDown)
     @player[:y] -= @speed if button_down?(Gosu::Button::KbUp)
