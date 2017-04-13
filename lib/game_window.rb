@@ -7,10 +7,10 @@ class GameWindow < Hasu::Window
   def initialize
     super(WINDOW_X, WINDOW_Y, false)
     @background_sprite = Gosu::Image.new(self, 'images/mako.png', true)
-	
     @koala_sprite = Gosu::Image.new(self, 'images/essai.png', true)
     @enemy_sprite = Gosu::Image.new(self, 'images/bea.png', true)
     @flag_sprite = Gosu::Image.new(self, 'images/choco.png', true)
+	@rubis_sprite = Gosu::Image.new(self, 'images/rubis.png', true)
     @font = Gosu::Font.new(self, Gosu::default_font_name, 30)
     @flag = {x: WINDOW_X - SPRITE_SIZE, y: WINDOW_Y - SPRITE_SIZE2}
     @music = Gosu::Song.new(self, "musics/choco.wav")
@@ -23,8 +23,9 @@ class GameWindow < Hasu::Window
     @player[:y] += @speed if button_down?(Gosu::Button::KbDown)
     @player[:y] -= @speed if button_down?(Gosu::Button::KbUp)
     @player[:x] = normalize(@player[:x], WINDOW_X - SPRITE_SIZE)
-    @player[:y] = normalize(@player[:y], WINDOW_Y - SPRITE_SIZE)
-    handle_enemies
+    @player[:y] = normalize(@player[:y], WINDOW_Y - SPRITE_SIZE)  
+	handle_enemies
+	handle_rubis
     handle_quit
     if winning?
       reinit
@@ -34,11 +35,9 @@ class GameWindow < Hasu::Window
     end
   end
 
-  
 
   def draw
     @font.draw("Level #{@enemies.length}", WINDOW_X - 100, 10, 3, 1.0, 1.0, Gosu::Color::BLACK)
-
     @koala_sprite.draw(@player[:x], @player[:y], 2)
     @enemies.each do |enemy|
       @enemy_sprite.draw(enemy[:x], enemy[:y], 2)
@@ -67,6 +66,7 @@ class GameWindow < Hasu::Window
   def reinit
     @speed += 1
     @player = {x: 0, y: 768}
+	@rubis = ({x: 500 + rand(100), y: 200 + rand(300)})
     @enemies.push({x: 500 + rand(100), y: 200 + rand(300)})
     high_score
   end

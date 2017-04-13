@@ -1,5 +1,5 @@
 require ::File.expand_path('config/boot')
 
-Hasu.load 'lib/game_window.rb'
+Hasu.load 'lib/Running_window.rb'
 
 GameWindow.run
