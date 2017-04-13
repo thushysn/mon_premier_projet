@@ -16,7 +16,15 @@ class Window < Gosu::Window
 			move(:right)
 		elsif Gosu::button_down?(Gosu::KbLeft)
 		move(:left)
+		jump if Gosu::button_down?(Gosu::KbSpace)
+		handle_jump if @jumping
 		end
+	end
+	
+	def jump
+		return if @jumping
+		@jumping = true
+		@vertical_ velocity = 30
 	end
 	
 	def move (way)
