@@ -5,10 +5,11 @@ class Window < Gosu::Window
   def initialize
     super(960, 480)
     self.caption = "Cours Forest !"
-	
 	@hero = Gosu::Image.new(self, 'images/essai.png', true)
+	@ennemy = Gosu::Image.new(self, 'images/bea.png', true)
 	@background = Gosu::Image.new(self, 'images/mako.png', true)
 	@hero_position = [50, 348]
+	@ennemy_position = [200, 331]
 	end
 
 	def update
@@ -19,6 +20,12 @@ class Window < Gosu::Window
 		jump if Gosu::button_down?(Gosu::KbSpace)
 		handle_jump if @jumping
 		end
+	end
+	
+	def jump
+		return if @jumping
+		@jumping = true
+		@vertical_velocity = 30
 	end
 	
 	def handle_jump
@@ -40,12 +47,6 @@ class Window < Gosu::Window
 		end
 	end
 	
-	def jump
-		return if @jumping
-		@jumping = true
-		@vertical_velocity = 30
-	end
-	
 	def move (way)
 		speed = 5
 		if way == :right
@@ -58,6 +59,7 @@ class Window < Gosu::Window
 	def draw
 		@background.draw(0, 0, 0)
 		@hero.draw(@hero_position[0], @hero_position[1], 1)
+		@ennemy.draw(@ennemy_position[0], @ennemy_position[1], 1)
 	end	
 end
 
