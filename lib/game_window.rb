@@ -10,7 +10,6 @@ class GameWindow < Hasu::Window
     @koala_sprite = Gosu::Image.new(self, 'images/essai.png', true)
     @enemy_sprite = Gosu::Image.new(self, 'images/bea.png', true)
     @flag_sprite = Gosu::Image.new(self, 'images/choco.png', true)
-	@rubis_sprite = Gosu::Image.new(self, 'images/rubis.png', true)
     @font = Gosu::Font.new(self, Gosu::default_font_name, 30)
     @flag = {x: WINDOW_X - SPRITE_SIZE, y: WINDOW_Y - SPRITE_SIZE2}
     @music = Gosu::Song.new(self, "musics/choco.wav")
@@ -25,7 +24,6 @@ class GameWindow < Hasu::Window
     @player[:x] = normalize(@player[:x], WINDOW_X - SPRITE_SIZE)
     @player[:y] = normalize(@player[:y], WINDOW_Y - SPRITE_SIZE)  
 	handle_enemies
-	handle_rubis
     handle_quit
     if winning?
       reinit

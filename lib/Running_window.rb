@@ -13,14 +13,14 @@ class Window < Gosu::Window
 	end
 
 	def update
+		jump if Gosu::button_down?(Gosu::KbSpace)
 		if Gosu::button_down?(Gosu::KbRight)
 			move(:right)
 		elsif Gosu::button_down?(Gosu::KbLeft)
 		move(:left)
-		jump if Gosu::button_down?(Gosu::KbSpace)
 		handle_jump if @jumping
 		end
-	end
+end
 	
 	def jump
 		return if @jumping
@@ -31,12 +31,13 @@ class Window < Gosu::Window
 	def handle_jump
 		gravity = 1.75
 		ground_level = 348
-		@hero_position = [@hero_position[0], @hero_position[1] - @vertical_velocity]
+		@hero_position = [@hero_position[0], 
+						  @hero_position[1] - @vertical_velocity]
 		
 		if @vertical_velocity.round == 0
 			@vertical_velocity = -1
 		elsif @vertical_velocity < 0 
-		 @vertical_velocity = vertical_velocity * gravity
+		 @vertical_velocity = @vertical_velocity * gravity
 		else
 		 @vertical_velocity = @vertical_velocity / gravity
 		end
