@@ -21,6 +21,11 @@ class Window < Gosu::Window
 		end
 	end
 	
+	def handle_jump
+		gravity = 1.75
+		ground_level = 348
+		@hero_position = [@hero_position[0], @hero_position[1] - @vertical_velocity]
+	
 	def jump
 		return if @jumping
 		@jumping = true
