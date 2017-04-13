@@ -24,7 +24,7 @@ class Window < Gosu::Window
 	def jump
 		return if @jumping
 		@jumping = true
-		@vertical_ velocity = 30
+		@vertical_velocity = 30
 	end
 	
 	def move (way)
